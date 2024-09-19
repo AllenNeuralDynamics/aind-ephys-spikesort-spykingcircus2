@@ -1,0 +1,25 @@
+{
+	"version": 1,
+	"parameters": [
+		{
+			"id": "8bMWKuFqam9fNZbA",
+			"name": "apply motion correction",
+			"description": "Whether to apply SC2 motion correction.",
+			"type": "list",
+			"value_type": "string",
+			"default_value": "true",
+			"extra_data": [
+				"true",
+				"false"
+			]
+		},
+		{
+			"id": "cvG3lbtmb7bgNGfc",
+			"name": "min channels for drift",
+			"description": "Minimum number of channels to enable SC2 motion correction.",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "96"
+		}
+	]
+}
