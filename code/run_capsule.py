@@ -152,8 +152,12 @@ if __name__ == "__main__":
             print("Drift correction disabled")
             sorter_params["apply_motion_correction"] = False
 
-        # SC@ supports multi-segment
+        # SC2 supports multi-segment, but not motion-correction
         split_segments = False
+        if recording.get_num_segments() > 1 and APPLY_MOTION_CORRECTION:
+            print("Concatenating multi-segment recording")
+            recording = si.concatenate_recordings([recording])
+            split_segments = True
 
         # run sc2
         try:
