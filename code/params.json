@@ -16,7 +16,7 @@
             "seed": 42
         },
         "apply_motion_correction": true,
-        "motion_correction": {"preset": "nonrigid_fast_and_accurate"},
+        "motion_correction": {"preset": "dredge_fast"},
         "merging": {
             "similarity_kwargs": {"method": "cosine", "support": "union", "max_lag_ms": 0.2},
             "correlograms_kwargs": {},
@@ -29,7 +29,7 @@
         "matching": {"method": "wobble"},
         "apply_preprocessing": true,
         "matched_filtering": true,
-        "cache_preprocessing": {"mode": "memory", "memory_limit": 0.5, "delete_cache": true},
+        "cache_preprocessing": {"mode": "no-cache", "memory_limit": 0.5, "delete_cache": true},
         "multi_units_only": false,
         "job_kwargs": {"n_jobs": 0.8},
         "debug": false
