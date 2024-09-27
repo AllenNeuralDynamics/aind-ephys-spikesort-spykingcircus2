@@ -2,6 +2,18 @@
 	"version": 1,
 	"parameters": [
 		{
+			"id": "3Q8U0zsyWwa2n3xh",
+			"name": "raise if fails",
+			"description": "Whether to raise an error in case of failure or continue. true means raise",
+			"type": "list",
+			"value_type": "string",
+			"default_value": "true",
+			"extra_data": [
+				"true",
+				"false"
+			]
+		},
+		{
 			"id": "8bMWKuFqam9fNZbA",
 			"name": "apply motion correction",
 			"description": "Whether to apply SC2 motion correction.",
