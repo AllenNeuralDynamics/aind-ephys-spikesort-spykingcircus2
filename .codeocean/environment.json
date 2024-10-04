@@ -23,7 +23,7 @@
 				},
 				{
 					"name": "spikeinterface[full]",
-					"version": "0.101.1"
+					"version": "0.101.2"
 				},
 				{
 					"name": "torch",
