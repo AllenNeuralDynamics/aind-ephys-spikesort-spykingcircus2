@@ -1,4 +1,4 @@
-# hash:sha256:004d5dddc4119eee1cca75ac933fbe4c42cf1eef7a8e9e5bb87cdc3e9ab28ae6
+# hash:sha256:93b51867528c727a3f8af65b68fd228cf4e67f36d026a66098f36b0290c00f34
 ARG REGISTRY_HOST
 FROM $REGISTRY_HOST/codeocean/jupyterlab:3.6.1-miniconda4.12.0-python3.9-ubuntu20.04
 
@@ -16,3 +16,6 @@ RUN pip install -U --no-cache-dir \
     hdbscan==0.8.38.post1 \
     spikeinterface[full]==0.101.2 \
     torch==2.2.0
+
+COPY postInstall /
+RUN /postInstall
