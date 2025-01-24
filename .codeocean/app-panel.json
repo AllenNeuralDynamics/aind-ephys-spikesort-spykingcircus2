@@ -15,11 +15,11 @@
 		},
 		{
 			"id": "8bMWKuFqam9fNZbA",
-			"name": "apply motion correction",
-			"description": "Whether to apply SC2 motion correction.",
+			"name": "skip motion correction",
+			"description": "Whether to skip SC2 motion correction.",
 			"type": "list",
 			"value_type": "string",
-			"default_value": "true",
+			"default_value": "false",
 			"extra_data": [
 				"true",
 				"false"
