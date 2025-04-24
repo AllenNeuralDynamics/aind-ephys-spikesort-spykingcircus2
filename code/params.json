@@ -4,8 +4,8 @@
         "progress_bar": false
     },
     "sorter": {
-        "general": {"ms_before": 2, "ms_after": 2, "radius_um": 75},
-        "sparsity": {"method": "snr", "amplitude_mode": "peak_to_peak", "threshold": 1},
+        "general": {"ms_before": 2, "ms_after": 2, "radius_um": 100},
+        "sparsity": {"method": "snr", "amplitude_mode": "peak_to_peak", "threshold": 0.25},
         "filtering": {"freq_min": 150, "freq_max": 7000, "ftype": "bessel", "filter_order": 2, "margin_ms": 10},
         "whitening": {"mode": "local", "regularize": false},
         "detection": {"peak_sign": "neg", "detect_threshold": 5},
@@ -22,10 +22,10 @@
         "clustering": {"legacy": true},
         "matching": {"method": "circus-omp-svd"},
         "apply_preprocessing": false,
-        "matched_filtering": true,
+        "templates_from_svd": true,
         "cache_preprocessing": {"mode": "no-cache", "memory_limit": 0.5, "delete_cache": true},
         "multi_units_only": false,
-        "job_kwargs": {"n_jobs": 0.8},
+        "job_kwargs": {"n_jobs": 0.9},
         "seed": 42,
         "debug": false
     }
