@@ -20,7 +20,7 @@
         "motion_correction": {"preset": "dredge_fast"},
         "merging": {"max_distance_um": 50},
         "clustering": {"legacy": true},
-        "matching": {"method": "circus-omp-svd"},
+        "matching": {"method": "wobble"},
         "apply_preprocessing": false,
         "templates_from_svd": true,
         "cache_preprocessing": {"mode": "no-cache", "memory_limit": 0.5, "delete_cache": true},
