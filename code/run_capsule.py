@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
     data_process_prefix = "data_process_spikesorting"
 
-    job_kwargs = spikesorting_params.pop["job_kwargs"]
+    job_kwargs = spikesorting_params.pop("job_kwargs")
     job_kwargs["n_jobs"] = N_JOBS
     si.set_global_job_kwargs(**job_kwargs)
 
