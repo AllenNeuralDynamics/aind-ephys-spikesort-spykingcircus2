@@ -23,7 +23,7 @@
         "cleaning": {"min_snr": 5, "max_jitter_ms": 0.2, "sparsify_threshold": 1, "mean_sd_ratio_threshold": 3},
         "min_firing_rate": 0.1,
         "matching": {"method": "circus-omp", "method_kwargs": {}, "pipeline_kwargs": {}},
-        "apply_preprocessing": true,
+        "apply_preprocessing": false,
         "apply_whitening": true,
         "cache_preprocessing": {"mode": "memory", "memory_limit": 0.5},
         "chunk_preprocessing": {"memory_limit": null},
