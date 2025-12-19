@@ -1,7 +1,8 @@
 {
     "job_kwargs": {
         "chunk_duration": "1s",
-        "progress_bar": false
+        "progress_bar": false,
+        "mp_context": "spawn"
     },
     "sorter": {
         "general": {"ms_before": 0.5, "ms_after": 1.5, "radius_um": 100.0},
