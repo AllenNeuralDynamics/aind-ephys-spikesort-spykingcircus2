@@ -25,7 +25,7 @@
         "matching": {"method": "circus-omp", "method_kwargs": {}, "pipeline_kwargs": {}},
         "apply_preprocessing": false,
         "apply_whitening": true,
-        "cache_preprocessing": {"mode": "memory", "memory_limit": 0.5},
+        "cache_preprocessing": {"mode": "no-cache"},
         "chunk_preprocessing": {"memory_limit": null},
         "multi_units_only": false,
         "job_kwargs": {},
