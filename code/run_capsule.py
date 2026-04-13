@@ -189,7 +189,7 @@ if __name__ == "__main__":
                 recording = si.load_extractor(recording_folder)
             logging.info(recording)
         except Exception as e:
-            logging.info(f"Skipping spike sorting for {recording_name}.")
+            logging.info(f"Skipping spike sorting for {recording_name}. Error loading recording: {e}")
             # create an empty result file (needed for pipeline)
             sorting_output_folder.mkdir(parents=True, exist_ok=True)
             error_file = sorting_output_folder / "error.txt"
