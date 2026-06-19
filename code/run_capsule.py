@@ -234,6 +234,10 @@ if __name__ == "__main__":
             except Exception as e:
                 logging.info(f"\tError deleting sorter output folder: {e}")
 
+            # remove "is_merged" column (since it causes problems downstream)
+            if "is_merged" in sorting.get_property_keys():
+                sorting.delete_property("is_merged")
+
             # remove empty units
             sorting = sorting.remove_empty_units()
             # remove spikes beyond num_Samples (if any)
