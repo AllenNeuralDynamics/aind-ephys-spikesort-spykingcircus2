@@ -23,7 +23,9 @@ import spikeinterface.sorters as ss
 import spikeinterface.curation as sc
 
 # AIND
-from aind_data_schema.core.processing import DataProcess
+from aind_data_schema.core.processing import DataProcess, ProcessStage
+from aind_data_schema.components.identifiers import Code
+from aind_data_schema_models.process_names import ProcessName
 
 try:
     from aind_log_utils import log
@@ -105,8 +107,8 @@ if __name__ == "__main__":
     N_JOBS = args.static_n_jobs or args.n_jobs
     N_JOBS = int(N_JOBS) if not N_JOBS.startswith("0.") else float(N_JOBS)
 
-    # Use CO_CPUS/SLURM_CPUS_ON_NODE env variable if available
-    N_JOBS_EXT = os.getenv("CO_CPUS") or os.getenv("SLURM_CPUS_ON_NODE") or os.getenv("SLURM_CPUS_PER_TASK")
+    # Use CO_CPUS/N_JOBS_EXT env variable if available
+    N_JOBS_EXT = os.getenv("CO_CPUS") or os.getenv("N_JOBS_EXT")
     N_JOBS = int(N_JOBS_EXT) if N_JOBS_EXT is not None else N_JOBS
 
     # look for subject and data_description JSON files
@@ -232,6 +234,10 @@ if __name__ == "__main__":
             except Exception as e:
                 logging.info(f"\tError deleting sorter output folder: {e}")
 
+            # remove "is_merged" column (since it causes problems downstream)
+            if "is_merged" in sorting.get_property_keys():
+                sorting.delete_property("is_merged")
+
             # remove empty units
             sorting = sorting.remove_empty_units()
             # remove spikes beyond num_Samples (if any)
@@ -273,15 +279,19 @@ if __name__ == "__main__":
         elapsed_time_sorting = np.round(t_sorting_end - t_sorting_start, 2)
 
         spikesorting_process = DataProcess(
+            process_type=ProcessName.SPIKE_SORTING,
+            stage=ProcessStage.PROCESSING,
             name="Spike sorting",
-            software_version=VERSION,  # either release or git commit
+            experimenters=["AIND Pipeline"],
+            code=Code(
+                url=URL,
+                version=VERSION, # either release or git commit
+                parameters=sorting_params
+            ),
             start_date_time=datetime_start_sorting,
             end_date_time=datetime_start_sorting + timedelta(seconds=np.floor(elapsed_time_sorting)),
-            input_location=str(data_folder),
-            output_location=str(results_folder),
-            code_url=URL,
-            parameters=sorting_params,
-            outputs=sorting_outputs,
+            output_path=str(results_folder),
+            output_parameters=sorting_outputs,
             notes=spikesorting_notes,
         )
         with open(sorting_output_process_json, "w") as f:
